@@ -1,15 +1,20 @@
 import moment from "moment";
 
-declare module 'moment' {
-    interface Moment {
-        fn(name: string): void;
-    }
+declare module "moment" {
+  interface Moment {
+    toOADate(): number;
+  }
 }
 
 export function extendMoment(): void {
-    moment.prototype.fn = function (name: string) {
-        console.log("Name:", name);
-    };
+  // TODO: Handle timezone offsets issue
+  moment.prototype.toOADate = function (): number {
+    const DAY_MILLISECONDS = 86400000;
+    const MS_DAY_OFFSET = 25569;
+
+    const ms = this.valueOf();
+    return ms / DAY_MILLISECONDS + MS_DAY_OFFSET;
+  };
 }
 
 extendMoment();
