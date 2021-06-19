@@ -1,12 +1,12 @@
 import moment from "moment";
-import '../moment-oadate';
+import "../moment-oadate";
 
-let m = moment("21/10/2015", "DD/MM/YYYY");
+const m = moment.utc("21/10/2015", "DD/MM/YYYY");
 
-let date = m.toDate()
-console.log(date);
+// Moment's native method
+let date = m.toDate();
+console.log("UTC:", date);  // 2015-10-21T00:00:00.000Z
 
+// Extended method
 const oaDate = m.toOADate();
-console.log(oaDate);
-
-// TODO: Not build this file
+console.log("OADate:", oaDate); // 42298
