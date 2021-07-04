@@ -1,6 +1,6 @@
 import moment from "moment";
 
-// Extend types
+// Extend Moment types
 declare module "moment" {
   interface Moment {
     /**
@@ -8,12 +8,29 @@ declare module "moment" {
      * @returns number
      */
     toOADate(): number;
-    fromOADate(oaDate: number): moment.Moment;
   }
 }
 
-const DAY_MILLISECONDS = 86400000;
-const MS_DAY_OFFSET = 25569;
+const DAY_TO_MILLISECONDS = 86400000;
+const OADATE_DAY_OFFSET = 25569;
+
+/**
+ * Returns the moment object for the provided OADate value
+ * @param { number } oaDate value
+ * @returns { moment.Moment } moment date
+ */
+export const fromOADate = function (oaDate: number): moment.Moment {
+  let ms = (oaDate - OADATE_DAY_OFFSET) * DAY_TO_MILLISECONDS;
+
+  if (oaDate < 0) {
+    const frac = (oaDate - Math.trunc(oaDate)) * DAY_TO_MILLISECONDS;
+    if (frac !== 0) {
+      ms -= frac * 2;
+    }
+  }
+
+  return moment(ms).utc();
+};
 
 function extendMoment(): void {
   /**
@@ -24,14 +41,17 @@ function extendMoment(): void {
     // Get moment time in milliseconds
     const ms = this.valueOf();
 
-    // TODO: Handle negative values
-    return ms / DAY_MILLISECONDS + MS_DAY_OFFSET;
-  };
+    let oaDate = ms / DAY_TO_MILLISECONDS + OADATE_DAY_OFFSET;
+    if (oaDate < 0) {
+      const fractionPart = oaDate - Math.trunc(oaDate);
+      if (fractionPart !== 0) {
+        oaDate = Math.ceil(oaDate) - fractionPart - 2;
+      }
+    }
 
-  moment.prototype.fromOADate = function (oaDate: number): moment.Moment {
-    // TODO: Implement method
-    return this;
+    return oaDate;
   };
 }
 
+// Run the method to extend moment prototype
 extendMoment();
