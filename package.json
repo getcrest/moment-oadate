@@ -13,15 +13,15 @@
   "types": "dist/moment-oadate.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anant-matelabs/moment-oadate.git"
+    "url": "git+https://github.com/MateLabs/moment-oadate.git"
   },
-  "keywords": [],
-  "author": "Anant Singh",
+  "keywords": ["moment", "ole-automation"],
+  "author": "MateLabs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anant-matelabs/moment-oadate/issues"
+    "url": "https://github.com/MateLabs/moment-oadate/issues"
   },
-  "homepage": "https://github.com/anant-matelabs/moment-oadate#readme",
+  "homepage": "https://github.com/MateLabs/moment-oadate#readme",
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "babel-jest": "^27.0.6",
