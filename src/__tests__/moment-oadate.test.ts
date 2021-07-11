@@ -1,4 +1,4 @@
-import * as moment from "moment";
+import moment from "moment";
 import "../moment-oadate";
 import { fromOADate } from "../moment-oadate";
 
