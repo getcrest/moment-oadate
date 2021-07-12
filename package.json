@@ -4,7 +4,7 @@
   "description": "Extends moment to use OADate format",
   "scripts": {
     "build": "tsc --build",
-    "test": "ts-node ./src/test/test"
+    "test": "jest --coverage"
   },
   "files": [
     "dist"
@@ -13,17 +13,21 @@
   "types": "dist/moment-oadate.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anant-matelabs/moment-oadate.git"
+    "url": "git+https://github.com/MateLabs/moment-oadate.git"
   },
-  "keywords": [],
-  "author": "Anant Singh",
+  "keywords": ["moment", "ole-automation"],
+  "author": "MateLabs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anant-matelabs/moment-oadate/issues"
+    "url": "https://github.com/MateLabs/moment-oadate/issues"
   },
-  "homepage": "https://github.com/anant-matelabs/moment-oadate#readme",
+  "homepage": "https://github.com/MateLabs/moment-oadate#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
     "moment": "^2.29.1",
+    "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
