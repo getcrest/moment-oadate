@@ -1,6 +1,6 @@
 {
   "name": "moment-oadate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extends moment to use OADate format",
   "scripts": {
     "build": "tsc --build",
